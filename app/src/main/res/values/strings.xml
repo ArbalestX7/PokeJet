@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">PokéJet</string>
+    <string name="pokemon_name">Pokémon Name</string>
+    <string name="desc">Description</string>
+    <string name="list">List</string>
+    <string name="grid">Grid</string>
+    <string name="share">Share</string>
+    <string name="nama_about">Dito Iqbal Kusuma</string>
+    <string name="email_about">ditoiqbalkusuma11@gmail.com</string>
+    <string name="pokemon_image">Image Pokemon</string>
+    <string name="splash_name">PokéDex</string>
+    <string name="height_weight">Height / Weight :</string>
+    <string name="Type">Type :</string>
+    <string name="Weak">Weaknesses :</string>
+    <string name="evo_image">Evolutions</string>
+    <string name="scroll_to_top">Scroll to Top</string>
+    <string name="search_poke">Search Pokémon</string>
+
+    <string name="menu_home">Home</string>
+    <string name="about_page">About Page</string>
+</resources>
