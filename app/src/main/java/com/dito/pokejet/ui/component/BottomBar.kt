@@ -14,9 +14,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.dito.pokejet.R
 import com.dito.pokejet.navigation.NavigationItem
 import com.dito.pokejet.navigation.Screen
-import com.dito.pokejet.R
 
 @Composable
 fun BottomBar(

@@ -2,7 +2,7 @@ package com.dito.pokejet.model
 
 
 data class Poke(
-    val id: Long,
+    val pokeId: Long,
     val name: String,
     val desc: String,
     val photo: String,

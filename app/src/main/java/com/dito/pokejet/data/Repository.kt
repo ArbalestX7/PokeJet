@@ -1,7 +1,6 @@
 package com.dito.pokejet.data
 
 import com.dito.pokejet.model.OrderPoke
-import com.dito.pokejet.model.Poke
 import com.dito.pokejet.model.PokeData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -20,15 +19,11 @@ class Repository {
         return flowOf(pokemons)
     }
 
-    fun searchPokemon(query: String): List<Poke> {
-        return PokeData.pokemon.filter{
-            it.name.contains(query, ignoreCase = true)
+
+    fun getOrderById(pokeId: Long): OrderPoke {
+        return pokemons.first() {
+            it.poke.pokeId == pokeId
         }
     }
 
-    fun getOrderById(id: Long): OrderPoke {
-        return pokemons.first() {
-            it.poke.id == id
-        }
-    }
 }

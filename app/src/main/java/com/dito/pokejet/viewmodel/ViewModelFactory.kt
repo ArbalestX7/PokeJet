@@ -3,6 +3,7 @@ package com.dito.pokejet.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dito.pokejet.data.Repository
+import com.dito.pokejet.ui.screen.detail.DetailViewModel
 import com.dito.pokejet.ui.screen.home.HomeViewModel
 
 class ViewModelFactory (
@@ -13,6 +14,9 @@ class ViewModelFactory (
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(repository) as T
+        }
+        if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
+            return DetailViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown Viewmodel Class: " + modelClass.name)
     }

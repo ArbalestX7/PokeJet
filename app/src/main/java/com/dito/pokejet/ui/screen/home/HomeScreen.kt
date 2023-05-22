@@ -3,19 +3,15 @@ package com.dito.pokejet.ui.screen.home
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.dito.pokejet.R
 import com.dito.pokejet.data.Repository
 import com.dito.pokejet.model.OrderPoke
 import com.dito.pokejet.ui.common.UiState
@@ -28,6 +24,7 @@ import kotlinx.coroutines.launch
 fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = ViewModelFactory(Repository())),
+    navigateToDetail: (Long) -> Unit
 ) {
     viewModel.uiState.collectAsState(initial = UiState.Loading).value.let { uiState ->
         when (uiState) {
@@ -37,7 +34,8 @@ fun HomeScreen(
             is UiState.Success -> {
                 HomeContent(
                     orderPoke = uiState.data,
-                    modifier = modifier
+                    modifier = modifier,
+                    navigateToDetail = navigateToDetail
                 )
             }
             is UiState.Error -> {}
@@ -48,7 +46,8 @@ fun HomeScreen(
 @Composable
 fun HomeContent(
     orderPoke: List<OrderPoke>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navigateToDetail: (Long) -> Unit,
 ) {
     Box(modifier = modifier) {
         val scope = rememberCoroutineScope()
@@ -62,8 +61,11 @@ fun HomeContent(
         ) {
             items(orderPoke) { data ->
                 PokeListItem(
+                    id = data.poke.pokeId,
                     name = data.poke.name,
-                    photoUrl = data.poke.photo
+                    type = data.poke.type,
+                    photoUrl = data.poke.photo,
+                    navigateToDetail = navigateToDetail
                 )
             }
         }
